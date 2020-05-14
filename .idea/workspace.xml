@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1bafd174-3c65-4f9d-a4ce-dcf517d0d739" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1b7hT3BMXeDlJkI8Wdan0Z8JLzj" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client.py" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Programare\Testing\WS\kuma-server\templates" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.client">
+    <configuration name="Test" type="PythonConfigurationType" factoryName="Python">
+      <module name="kuma-server" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="F:\Programare\Testing\WS\kuma-server\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="F:\Programare\Testing\WS\kuma-server\server.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="client" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="kuma-server" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="F:\Programare\Testing\WS\kuma-server\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/client.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="db_test" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="kuma-server" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="F:\Programare\Testing\WS\kuma-server\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/db_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.client" />
+      <item itemvalue="Python.Test" />
+      <item itemvalue="Python.db_test" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1bafd174-3c65-4f9d-a4ce-dcf517d0d739" name="Default Changelist" comment="" />
+      <created>1587989043028</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587989043028</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="94" y="147" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589204561720">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state x="94" y="147" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.984@0.0.1280.984" timestamp="1589204561720" />
+    <state x="420" y="247" key="FileChooserDialogImpl" timestamp="1589204559343">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state x="420" y="247" key="FileChooserDialogImpl/0.0.1280.984@0.0.1280.984" timestamp="1589204559343" />
+    <state width="1259" height="248" key="GridCell.Tab.0.bottom" timestamp="1589455416373">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state width="1259" height="248" key="GridCell.Tab.0.bottom/0.0.1280.984@0.0.1280.984" timestamp="1589455416373" />
+    <state width="1259" height="248" key="GridCell.Tab.0.center" timestamp="1589455416373">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state width="1259" height="248" key="GridCell.Tab.0.center/0.0.1280.984@0.0.1280.984" timestamp="1589455416373" />
+    <state width="1259" height="248" key="GridCell.Tab.0.left" timestamp="1589455416373">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state width="1259" height="248" key="GridCell.Tab.0.left/0.0.1280.984@0.0.1280.984" timestamp="1589455416373" />
+    <state width="1259" height="248" key="GridCell.Tab.0.right" timestamp="1589455416373">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state width="1259" height="248" key="GridCell.Tab.0.right/0.0.1280.984@0.0.1280.984" timestamp="1589455416373" />
+    <state width="1259" height="325" key="GridCell.Tab.1.bottom" timestamp="1589396233883">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state width="1259" height="325" key="GridCell.Tab.1.bottom/0.0.1280.984@0.0.1280.984" timestamp="1589396233883" />
+    <state width="1259" height="325" key="GridCell.Tab.1.center" timestamp="1589396233883">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state width="1259" height="325" key="GridCell.Tab.1.center/0.0.1280.984@0.0.1280.984" timestamp="1589396233883" />
+    <state width="1259" height="325" key="GridCell.Tab.1.left" timestamp="1589396233883">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state width="1259" height="325" key="GridCell.Tab.1.left/0.0.1280.984@0.0.1280.984" timestamp="1589396233883" />
+    <state width="1259" height="325" key="GridCell.Tab.1.right" timestamp="1589396233883">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state width="1259" height="325" key="GridCell.Tab.1.right/0.0.1280.984@0.0.1280.984" timestamp="1589396233883" />
+    <state x="141" y="135" key="SettingsEditor" timestamp="1587989518575">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state x="141" y="135" key="SettingsEditor/0.0.1280.984@0.0.1280.984" timestamp="1587989518575" />
+    <state x="303" y="211" width="672" height="678" key="search.everywhere.popup" timestamp="1588432927557">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state x="303" y="211" width="672" height="678" key="search.everywhere.popup/0.0.1280.984@0.0.1280.984" timestamp="1588432927557" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/entity/absenta.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="request.values.get('denumire')" language="Python" />
+        <watch expression="disc.nume_disciplina" language="Python" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
