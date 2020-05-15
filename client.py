@@ -84,6 +84,27 @@ def getDisciplina( disc ):
     getDiscipline()
 
 
+def showDiscipline():
+    r = requests.post('http://127.0.0.1:8080/discipline')
+    discipline = json.loads(r.text)["discipline"]
+
+    printer = PrettyTable()
+    printer.field_names = ["Id", "Denumire", "Profesor"]
+
+    for id in range(len(discipline)):
+        printer.add_row([id + 1, discipline[id]["denumire"], discipline[id]["profesor"]])
+
+    print(printer)
+
+    choice  = input("Enter discipline ID...")
+
+    try:
+        choice = int(choice)
+        return discipline[choice-1]
+    except:
+        return None
+
+
 def getClass(class_id):
     r = requests.post('http://127.0.0.1:8080/elevi/c'+class_id)
     catalog = json.loads(r.text)["elevi"]
@@ -167,6 +188,15 @@ def getNote(elev_id):
         printer.add_row([nota['id'], nota["nota"], nota["data"], nota['disciplina']["denumire"], nota['disciplina']["profesor"], nota['elev']["nume"], nota['elev']["clasa"]])
 
     print(printer)
+
+    grade_id = input("Enter grade ID...")
+
+    try:
+        grade_id = int(grade_id)
+
+        
+    except:
+        return
 
 
 def getAbsente(elev_id):
