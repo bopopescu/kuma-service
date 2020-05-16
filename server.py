@@ -220,9 +220,10 @@ def addNota():
     response = {}
 
     try:
-        elev = elevRepo.getElevById( request.values.get('eid') )
-        disc = discRepo.getDisciplinaById( request.values.get('did') )
-        nota = Nota( elev=elev, disciplina=disc, data=request.values.get('data'), nota=request.values.get('nota') )
+        elev = elevRepo.getElevById( request.values.get('eid') )[0]
+        disc = discRepo.getDisciplinaById( request.values.get('did') )[0]
+        data = request.values.get('data')
+        nota = Nota( elev=elev, disciplina=disc, data=data, nota=request.values.get('nota') )
         noteRepo.addNota(nota)
 
         response["response"] = "success"
@@ -237,9 +238,9 @@ def setNota():
     response = {}
 
     try:
-        nota = noteRepo.getNotaById( request.values.get('id') )
-        nota.elev = elevRepo.getElevById( request.values.get('eid') )
-        nota.disciplina = discRepo.getDisciplinaById( request.values.get('did') )
+        nota = noteRepo.getNotaById( request.values.get('id') )[0]
+        nota.elev = elevRepo.getElevById( request.values.get('eid') )[0]
+        nota.disciplina = discRepo.getDisciplinaById( request.values.get('did') )[0]
         nota.data = request.values.get('data')
         nota.nota = request.values.get('nota')
 
@@ -255,7 +256,7 @@ def dropNota():
     response = {}
 
     try:
-        nota = noteRepo.getNotaById( request.values.get('id') )
+        nota = noteRepo.getNotaById( request.values.get('id') )[0]
         noteRepo.delNota(nota)
 
         response["response"] = "success"
@@ -264,7 +265,7 @@ def dropNota():
     finally:
         return response
 
-'''
+
 @app.route("/absente", methods=['GET', 'POST'])
 def getAbsente():
     abste = abstRepo.getAbsente()
@@ -307,7 +308,6 @@ def getAbsentaDisc(id):
         return {"absente":jsonData}
     except:
         return ""
-'''
 
 
 @app.route("/catalog", methods=['GET', 'POST'])

@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="F:\Programare\Testing\WS\kuma-server\venv"
+$env:VIRTUAL_ENV="D:\Programare\Testing\kuma-service\venv"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name

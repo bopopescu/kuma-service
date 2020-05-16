@@ -38,7 +38,8 @@ disc_nou = Disciplina(id=1, nume_disciplina="SOA", profesor='Cocu Adina')
 abst_nou = Absenta(id=1, elev=elev_nou, disciplina=disc_nou, dataa=datetime.now().date() )
 #abstRepo.addAbsenta(abst_nou)
 
-nota_nou = Nota(id=1, elev=elev_nou, disciplina=disc_nou, data=datetime.now().date(), nota=7)
+#nota_nou = Nota(id=1, elev=elev_nou, disciplina=disc_nou, data=datetime.now().date(), nota=7)
+nota_nou = Nota(id=1, elev=elev_nou, disciplina=disc_nou, data="1989-10-10", nota=7)
 noteRepo.addNota(nota_nou)
 
 elevi = elevRepo.getElevi()

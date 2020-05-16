@@ -6,7 +6,7 @@ import sys
 class DB:
     def __init__(self):
         try:
-            self.__engine = db.create_engine('mysql+mysqlconnector://admin:admin@localhost/scoala')
+            self.__engine = db.create_engine('mysql+mysqlconnector://root:@localhost/scoala')
             connection = self.__engine.connect()
 
             self.connect()

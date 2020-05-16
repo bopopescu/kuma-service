@@ -2,6 +2,7 @@ from prettytable import PrettyTable
 import requests
 import json
 import sys
+from datetime import date
 
 
 def getClasses():
@@ -105,6 +106,27 @@ def showDiscipline():
         return None
 
 
+def showElev():
+    r = requests.post('http://127.0.0.1:8080/elevi')
+    elevi = json.loads(r.text)["elevi"]
+
+    printer = PrettyTable()
+    printer.field_names = ["Id", "Nume", "Clasa"]
+
+    for id in range(len(elevi)):
+        printer.add_row([id + 1, elevi[id]["nume"], elevi[id]["clasa"]])
+
+    print(printer)
+
+    choice = input("Enter elev ID...")
+
+    try:
+        choice = int(choice)
+        return elevi[choice - 1]
+    except:
+        return None
+
+
 def getClass(class_id):
     r = requests.post('http://127.0.0.1:8080/elevi/c'+class_id)
     catalog = json.loads(r.text)["elevi"]
@@ -131,9 +153,9 @@ def getClass(class_id):
             print("r - remove")
             choice = input()
 
-            if choice=="g":
+            if choice == "g":
                 getNote( catalog[student_id-1]['id'] )
-            elif choice=="a":
+            elif choice == "a":
                 getAbsente( catalog[student_id-1]['id'] )
             else:
                 getElev( catalog[student_id-1], choice )
@@ -184,8 +206,9 @@ def getNote(elev_id):
     printer = PrettyTable()
     printer.field_names = ["Id", "Nota", "Data", "Disciplina", "Profesor", "Elev", "Clasa"]
 
-    for nota in note:
-        printer.add_row([nota['id'], nota["nota"], nota["data"], nota['disciplina']["denumire"], nota['disciplina']["profesor"], nota['elev']["nume"], nota['elev']["clasa"]])
+    for id in range(len(note)):
+        nota = note[id]
+        printer.add_row([id+1, nota["nota"], nota["data"], nota['disciplina']["denumire"], nota['disciplina']["profesor"], nota['elev']["nume"], nota['elev']["clasa"]])
 
     print(printer)
 
@@ -194,9 +217,85 @@ def getNote(elev_id):
     try:
         grade_id = int(grade_id)
 
-        
+        if grade_id==0:
+            addNota(elev_id)
+        else:
+            setNota(note[grade_id-1])
     except:
         return
+
+
+def addNota(elev_id):
+    print("Adauga nota lui", elev_id)
+
+    disc = showDiscipline()
+    grade_date = input("Data notei(yyyy-MM-dd)...")
+    grade_value = input("Nota...")
+
+    data = {}
+
+    try:
+        grade_date = grade_date.split('-')
+        year = int( grade_date[0] )
+        month = int(grade_date[1])
+        day = int(grade_date[2])
+
+        grade_date = date( year, month, day )
+        grade_value = int( grade_value )
+
+        data["data"]=grade_date
+        data["nota"]=grade_value
+        data["eid"]=elev_id
+        data["did"]=disc['id']
+
+        r = requests.post('http://127.0.0.1:8080/note/insert', data)
+        result = json.loads(r.text)["response"]
+
+        if result == "success":
+            getNote(elev_id)
+        else:
+            addNota(elev_id)
+    except:
+        addNota(elev_id)
+
+
+def setNota(nota):
+    print("Nota", nota["id"])
+
+    choice = input("r - remove\nu - update")
+    data = {}
+    data["id"] = nota["id"]
+
+    if choice=="r":
+        r = requests.post('http://127.0.0.1:8080/note/remove', data)
+    elif choice=="u":
+        disc = showDiscipline()
+        if not disc == None:
+            data["did"] = disc["id"]
+        else:
+            data["did"] = nota["disciplina"]["id"]
+
+        elev = showElev()
+        if not elev == None:
+            data["eid"] = elev["id"]
+        else:
+            data["eid"] = nota["elev"]["id"]
+
+        grade_data = input("Data nota...")
+        if grade_data=="":
+            data["data"] = nota["data"]
+        else:
+            data["data"] = grade_data
+
+        grade_value = input("Valoare nota...")
+        if grade_value == "":
+            data["nota"] = nota["nota"]
+        else:
+            data["nota"] = int(grade_value)
+
+        r = requests.post('http://127.0.0.1:8080/note/update', data)
+
+    getNote( nota["elev"]["id"] )
 
 
 def getAbsente(elev_id):
@@ -206,8 +305,9 @@ def getAbsente(elev_id):
     printer = PrettyTable()
     printer.field_names = ["Id", "Data", "Disciplina", "Profesor", "Elev", "Clasa"]
 
-    for absenta in absente:
-        printer.add_row([absenta['id'], absenta["data"], absenta['disciplina']["denumire"], absenta['disciplina']["profesor"], absenta['elev']["nume"], absenta['elev']["clasa"]])
+    for id in range(len(absente)):
+        absenta = absente[id]
+        printer.add_row([id+1, absenta["data"], absenta['disciplina']["denumire"], absenta['disciplina']["profesor"], absenta['elev']["nume"], absenta['elev']["clasa"]])
 
     print(printer)
 
