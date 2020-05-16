@@ -70,6 +70,7 @@ def addElev():
         elevRepo.addElev(elev)
 
         response["response"] = "success"
+        db.commit()
     except:
         response["response"] = "failure"
     finally:
@@ -86,6 +87,7 @@ def setElev():
         elev.clasa = request.values.get('clasa')
 
         response["response"] = "success"
+        db.commit()
     except:
         response["response"] = "failure"
     finally:
@@ -101,6 +103,7 @@ def dropElev():
         elevRepo.delElev(elev)
 
         response["response"] = "success"
+        db.commit()
     except:
         response["response"] = "failure"
     finally:
@@ -134,6 +137,7 @@ def addDisciplina():
         discRepo.addDisciplina(disc)
 
         response["response"] = "success"
+        db.commit()
     except:
         response["response"] = "failure"
     finally:
@@ -150,6 +154,7 @@ def setDisciplina():
         disc.profesor = request.values.get('profesor')
 
         response["response"] = "success"
+        db.commit()
     except:
         response["response"] = "failure"
     finally:
@@ -165,6 +170,7 @@ def dropDisciplina():
         discRepo.delDisciplina(disc)
 
         response["response"] = "success"
+        db.commit()
     except:
         response["response"] = "failure"
     finally:
@@ -227,6 +233,7 @@ def addNota():
         noteRepo.addNota(nota)
 
         response["response"] = "success"
+        db.commit()
     except:
         response["response"] = "failure"
     finally:
@@ -245,6 +252,7 @@ def setNota():
         nota.nota = request.values.get('nota')
 
         response["response"] = "success"
+        db.commit()
     except:
         response["response"] = "failure"
     finally:
@@ -260,6 +268,7 @@ def dropNota():
         noteRepo.delNota(nota)
 
         response["response"] = "success"
+        db.commit()
     except:
         response["response"] = "failure"
     finally:
