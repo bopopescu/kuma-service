@@ -97,6 +97,9 @@ class Note:
     def getNotaByDisciplina(self, disciplina):
         return self.__db.query(Nota).filter(Nota.disciplina==disciplina)
 
+    def getNotaByDisciplinaAndElev(self, disciplina, elev):
+        return self.__db.query(Nota).filter(Nota.disciplina==disciplina).filter(Nota.elev==elev)
+
     def getNotaByDate(self, date):
         return self.__db.query(Nota).filter(Nota.data==date)
 

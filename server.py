@@ -215,14 +215,30 @@ def getNotaDisc(id):
         return ""
 
 
+@app.route("/note/d<did>e<eid>", methods=['GET', 'POST'])
+def getNotaDE(did, eid):
+    disc = discRepo.getDisciplinaById(did)[0]
+    elev = elevRepo.getElevById(eid)[0]
+    try:
+        note = noteRepo.getNotaByDisciplinaAndElev(disc, elev)
+        jsonData = []
+        for nota in note:
+            jsonData.append(nota.getJsonRaw())
+        return {"note": jsonData}
+    except:
+        return ""
+
+
 @app.route("/note/insert", methods=['POST'])
 def addNota():
     response = {}
 
     try:
-        elev = elevRepo.getElevById( request.values.get('eid') )
-        disc = discRepo.getDisciplinaById( request.values.get('did') )
-        nota = Nota( elev=elev, disciplina=disc, data=request.values.get('data'), nota=request.values.get('nota') )
+        elev = elevRepo.getElevById( request.values.get('eid') )[0]
+        disc = discRepo.getDisciplinaById( request.values.get('did') )[0]
+        data = datetime.strptime( request.values.get('data'), "%Y-%m-%d" ).date()
+        nota = int( request.values.get('nota') )
+        nota = Nota( elev=elev, disciplina=disc, data=data, nota=nota )
         noteRepo.addNota(nota)
 
         response["response"] = "success"
@@ -237,11 +253,11 @@ def setNota():
     response = {}
 
     try:
-        nota = noteRepo.getNotaById( request.values.get('id') )
-        nota.elev = elevRepo.getElevById( request.values.get('eid') )
-        nota.disciplina = discRepo.getDisciplinaById( request.values.get('did') )
-        nota.data = request.values.get('data')
-        nota.nota = request.values.get('nota')
+        nota = noteRepo.getNotaById( request.values.get('id') )[0]
+        nota.elev = elevRepo.getElevById( request.values.get('eid') )[0]
+        nota.disciplina = discRepo.getDisciplinaById( request.values.get('did') )[0]
+        nota.data = datetime.strptime( request.values.get('data'), "%Y-%m-%d" ).date()
+        nota.nota = int( request.values.get('nota') )
 
         response["response"] = "success"
     except:
@@ -255,7 +271,7 @@ def dropNota():
     response = {}
 
     try:
-        nota = noteRepo.getNotaById( request.values.get('id') )
+        nota = noteRepo.getNotaById( request.values.get('id') )[0]
         noteRepo.delNota(nota)
 
         response["response"] = "success"

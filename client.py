@@ -126,15 +126,15 @@ def getClass(class_id):
 
         if student_id>0:
             print("g - grades")
-            print("a - absences")
+#            print("a - absences")
             print("u - update")
             print("r - remove")
             choice = input()
 
             if choice=="g":
                 getNote( catalog[student_id-1]['id'] )
-            elif choice=="a":
-                getAbsente( catalog[student_id-1]['id'] )
+#            elif choice=="a":
+#                getAbsente( catalog[student_id-1]['id'] )
             else:
                 getElev( catalog[student_id-1], choice )
         else:
@@ -184,8 +184,9 @@ def getNote(elev_id):
     printer = PrettyTable()
     printer.field_names = ["Id", "Nota", "Data", "Disciplina", "Profesor", "Elev", "Clasa"]
 
-    for nota in note:
-        printer.add_row([nota['id'], nota["nota"], nota["data"], nota['disciplina']["denumire"], nota['disciplina']["profesor"], nota['elev']["nume"], nota['elev']["clasa"]])
+    for id in range(len(note)):
+        nota = note[id]
+        printer.add_row([id+1, nota["nota"], nota["data"], nota['disciplina']["denumire"], nota['disciplina']["profesor"], nota['elev']["nume"], nota['elev']["clasa"]])
 
     print(printer)
 
@@ -194,11 +195,61 @@ def getNote(elev_id):
     try:
         grade_id = int(grade_id)
 
-        
+        if grade_id > 0:
+            print("u - update")
+            print("r - remove")
+            choice = input()
+            getNota(note[grade_id-1], choice)
+        else:
+            addNota(elev_id)
+
     except:
         return
 
 
+def addNota(elev_id):
+    disc_id = showDiscipline()["id"]
+    data = {}
+
+    data["eid"] = elev_id
+    data["did"] = disc_id
+
+    data["data"] = input("Data nota...")
+    data["nota"] = input("Valoare nota...")
+
+    r = requests.post('http://127.0.0.1:8080/note/insert', data)
+    result = json.loads(r.text)["response"]
+
+    if result == "success":
+        getNote(elev_id)
+    else:
+        addNota(elev_id)
+
+
+def getNota(grade, choice):
+    data = {}
+    data["id"] = grade["id"]
+
+    if choice=="r":
+        r = requests.post('http://127.0.0.1:8080/note/remove', data)
+    elif choice=="u":
+        data["eid"] = grade["elev"]["id"]
+        data["did"] = showDiscipline()["id"]
+        if data["did"] == "":
+            data["did"] = grade["disciplina"]["id"]
+        data["data"] = input("Data nota({})...".format(grade["data"]))
+        if data["data"] == "":
+            data["data"] = grade["data"]
+        data["nota"] = input("Valoare nota({})...".format(grade["nota"]))
+        if data["nota"] == "":
+            data["nota"] = grade["nota"]
+
+        r = requests.post('http://127.0.0.1:8080/note/update', data)
+
+    getNote(grade["elev"]["id"])
+
+
+'''
 def getAbsente(elev_id):
     r = requests.post('http://127.0.0.1:8080/absente/e{}'.format( elev_id ))
     absente = json.loads(r.text)["absente"]
@@ -210,7 +261,7 @@ def getAbsente(elev_id):
         printer.add_row([absenta['id'], absenta["data"], absenta['disciplina']["denumire"], absenta['disciplina']["profesor"], absenta['elev']["nume"], absenta['elev']["clasa"]])
 
     print(printer)
-
+'''
 
 if __name__=="__main__":
     r = requests.post('http://127.0.0.1:8080')
