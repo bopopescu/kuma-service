@@ -10,18 +10,21 @@ class DB:
             connection = self.__engine.connect()
 
             self.connect()
-        except:
+        except Exception as e:
+            print(e, file=sys.stderr)
             print("Eroare la conectare", file=sys.stderr)
+            sys.exit(0)
 
     def connect(self):
-        Session = sessionmaker()
+        Session = sessionmaker(autoflush=True, autocommit=True)
         Session.configure(bind=self.__engine)
         self.__session = Session()
 
     def disconnect(self):
         try:
             self.__session.close()
-        except:
+        except Exception as e:
+            print(e, file=sys.stderr)
             print("Eroare la deconectare", file=sys.stderr)
 
     def query(self, type):
